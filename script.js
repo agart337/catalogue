@@ -1,3 +1,4 @@
+// week 1
 let details = document.querySelector(".faqs")
 details.addEventListener("toggle", (event) => {
     let mirrorDetails = document.querySelector("#mirror .faqs")
