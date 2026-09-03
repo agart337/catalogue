@@ -1,0 +1,315 @@
+@font-face {
+    font-family: 'arial-rounded';
+    src: url('arial-rounded-700.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'arial-rounded-body';
+    src: url('arial-rounded-300.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'arial-rounded', Arial, sans-serif;
+    font-weight: normal;
+    line-height: 1.3;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    color: black;
+    background-color: white;
+    -webkit-filter: url("#distort");
+    filter: url("#distort");
+    counter-reset: item;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'arial-rounded', Arial, sans-serif;
+    color: blue;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 300%;
+    line-height: 0.9;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+h2 {
+    font-size: 150%
+}
+
+h1::before,
+h1::after {
+    content: "\0024";
+    font-style: italic;
+    font-size: 90%;
+}
+
+h3::before,
+h3::after {
+    content: "\273F";
+    padding: 0 0.5rem;
+}
+
+
+p,
+details {
+    font-family: 'arial-rounded-body', Arial, sans-serif;
+    margin: 0.75rem 0;
+}
+
+.faq {
+    border: #DA0303 solid 2px;
+    padding: 0 1rem;
+    margin-top: 1.5rem;
+    right: 0;
+    left: 0;
+}
+
+[open] summary {
+    color: #DA0303
+}
+
+header {
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    transform: skew(0.25deg, 0.3deg);
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+header h2 {
+    margin: 0;
+    margin-top: 2rem;
+}
+
+header p,
+header div {
+    flex-basis: 250px;
+    margin: 0;
+    margin-top: 0.5em;
+}
+
+a,
+summary {
+    color: #040FAA;
+    text-decoration: underline;
+    text-underline-offset: 0.1rem;
+    font-style: italic;
+    cursor: pointer;
+}
+
+a:active {
+    color: #DA0303;
+}
+
+summary {
+    text-align: center;
+}
+
+#slogan {
+    border-bottom: solid 2px;
+    padding-bottom: 0.5em;
+    color: #040FAA;
+    transform: skew(-1deg, -0.5deg);
+    margin: 0.5em;
+}
+
+.full {
+    flex-basis: 100%;
+}
+
+.imgs img:hover {
+    box-shadow: #040FAA 2px 2px;
+}
+
+.imgs img:active {
+    box-shadow: #040FAA 0px 0px;
+}
+
+.important {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.action {
+    font-weight: bold;
+    font-size: 130%;
+    line-height: 1;
+    color: #DA0303;
+    font-family: Arial, sans-serif;
+}
+
+.action a {
+    font-style: normal;
+    color: inherit;
+}
+
+.action a:active {
+    font-style: italic;
+}
+
+.pitch {
+    line-height: 1;
+    font-family: Arial, sans-serif;
+}
+
+.question {
+    font-family: Arial, sans-serif;
+    font-style: italic;
+}
+
+.answer {
+    padding: 0 1rem;
+    font-style: italic;
+    font-weight: normal;
+    font-family: "Georgia", "Times New Roman", serif;
+}
+
+.services {
+    border: solid 2px;
+    padding: 0 1rem;
+
+}
+
+.serviceinfo,
+.serviceextras {
+    font-style: italic;
+    font-weight: normal;
+}
+
+.service {
+    text-transform: uppercase;
+    align-items: baseline;
+}
+
+
+ol {
+    padding: 0;
+    list-style: none;
+}
+
+ol p {
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+.service:before {
+    content: counter(item) ". ";
+}
+
+ol li {
+    counter-increment: item;
+}
+
+.item {
+    margin: 1rem 0;
+}
+
+.addendum {
+    font-style: italic;
+    font-weight: normal;
+
+}
+
+.addendum a {
+    text-decoration: none;
+    color: inherit
+}
+
+.addendum a:active {
+    color: #DA0303
+}
+
+hr {
+    border: none;
+    border-top: solid 2px;
+    color: #040FAA;
+    transform: skew(-1deg, -0.5deg);
+    margin: 0.5em;
+}
+
+.line {
+    display: flex;
+    align-items: baseline;
+}
+
+.line hr {
+    border: none;
+    border-bottom: dotted 2px;
+    transform: unset;
+    flex-grow: 1;
+    margin: 0 0.5rem;
+}
+
+.service,
+.price {
+    margin: 0;
+}
+
+#barcode,
+#copyright {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row-reverse wrap;
+    align-items: center;
+}
+
+#barcode a:active>img {
+    border: solid 1px;
+    padding: 1px
+}
+
+#barcode img {
+    display: block;
+    margin: 0 auto;
+    padding: 2px
+}
+
+#legal {
+    font-family: Arial, sans-serif;
+    font-size: 75%;
+    text-align: center;
+}
+
+#legal p {
+    margin: 0.2rem 0;
+    padding: 0 10px;
+}
+
+@media (max-width: 600px) {
+    body {
+        filter: url("#distort-mobile");
+    }
+
+    .services {
+        transform: skew(0);
+    }
+
+    #mirror {
+        transform: scaleX(-1);
+        opacity: 6%
+    }
+
+    #mirror header,
+    #mirror .services,
+    #mirror .pitch p,
+    #mirror details .faq {
+        transform: skew(0)
+    }
+}
