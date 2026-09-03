@@ -30,7 +30,7 @@ h1,
 h2,
 h3 {
     font-family: Georgia, "Times New Roman", serif;
-    color: black;
+    color: rgb(219, 26, 100);
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
@@ -71,7 +71,7 @@ details {
 }
 
 .faq {
-    border: #DA0303 solid 2px;
+    border: rgb(219, 26, 100) solid 2px;
     padding: 0 1rem;
     margin-top: 1.5rem;
     right: 0;
@@ -79,7 +79,7 @@ details {
 }
 
 [open] summary {
-    color: #DA0303
+    color: rgb(219, 26, 100)
 }
 
 header {
@@ -152,7 +152,7 @@ summary {
     font-weight: bold;
     font-size: 130%;
     line-height: 1;
-    color: #DA0303;
+    color: rgb(219, 26, 100);
     font-family: Arial, sans-serif;
 }
 
@@ -182,7 +182,7 @@ summary {
     font-family: "Georgia", "Times New Roman", serif;
 }
 
-.services {
+.projects {
     border: solid 2px;
     padding: 0 1rem;
 
