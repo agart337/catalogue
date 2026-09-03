@@ -1,20 +1,20 @@
 @font-face {
-    font-family: 'arial-rounded';
-    src: url('arial-rounded-700.ttf') format('truetype');
+    font-family: 'associate-sans';
+    src: url('associate-sans-bold.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'arial-rounded-body';
     src: url('arial-rounded-300.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-}
+} */
 
 body {
-    font-family: 'arial-rounded', Arial, sans-serif;
-    font-weight: normal;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
     line-height: 1.3;
     max-width: 500px;
     margin: 0 auto;
@@ -29,11 +29,11 @@ body {
 h1,
 h2,
 h3 {
-    font-family: 'arial-rounded', Arial, sans-serif;
-    color: blue;
+    font-family: Georgia, "Times New Roman", serif;
+    color: black;
     text-transform: uppercase;
     text-align: center;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 h1 {
@@ -67,6 +67,7 @@ p,
 details {
     font-family: 'arial-rounded-body', Arial, sans-serif;
     margin: 0.75rem 0;
+    line-height: 1.3;
 }
 
 .faq {
@@ -125,7 +126,7 @@ summary {
 #slogan {
     border-bottom: solid 2px;
     padding-bottom: 0.5em;
-    color: #040FAA;
+    color: black;
     transform: skew(-1deg, -0.5deg);
     margin: 0.5em;
 }
