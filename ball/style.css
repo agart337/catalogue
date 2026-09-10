@@ -1,15 +1,26 @@
 @font-face {
     font-family: 'associate-sans';
-    src: url('./fonts/associate-sans-bold.otf') format('opentype');
+    src: url('../fonts/associate-sans-bold.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'acumin';
-    src: url('./fonts/acumin-pro-condensed.otf') format('truetype');
+    src: url('../fonts/acumin-pro-condensed.otf') format('truetype');
     font-weight: normal;
     font-style: normal;
+}
+
+#ballCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    display: block;
+    cursor: pointer;
 }
 
 body {
@@ -19,11 +30,19 @@ body {
     max-width: 500px;
     margin: 0 auto;
     padding: 0 1rem;
+    overflow-x: hidden;
     color: black;
     background-color: white;
+    counter-reset: item;
+}
+
+/* the grain filter lives here, not on body, so that body (and the
+   fixed-position ball canvas inside it) isn't turned into a containing
+   block for position:fixed children -- filter does that just like
+   transform does, and it was throwing off the canvas's coordinates */
+#page {
     -webkit-filter: url("#distort");
     filter: url("#distort");
-    counter-reset: item;
 }
 
 h1,
@@ -255,7 +274,7 @@ a:hover {
 
 
 @media (max-width: 600px) {
-    body {
+    #page {
         filter: url("#distort-mobile");
     }
 

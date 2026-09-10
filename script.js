@@ -36,3 +36,15 @@ mirrorItems.forEach((mirrored) => {
     let skew = Math.random() * (1 - 0) + 0;
     mirrored.style.transform = `skew(${skew}deg, -${skew}deg)`
 });
+
+// week 2
+const canvas = document.getElementById('bg-effect');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+function animate() {
+    // your drawing/animation logic goes here
+    requestAnimationFrame(animate);
+}
+animate();
