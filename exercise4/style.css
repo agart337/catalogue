@@ -1,0 +1,12 @@
+body {
+    background-color: black;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+img {
+    width: 160px;
+    height: auto;
+    margin: 10px;
+}

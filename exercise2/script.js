@@ -145,9 +145,40 @@
 // }
 // document.addEventListener('click', changeBackgroundColor);
 
-const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'pink', 'purple'];
-for (let i = 0; i < colors.length; i = i + 1) {
-    setTimeout(function () {
-        document.body.style.backgroundColor = colors[i];
-    }, i * 1000);
-}
+// const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'pink', 'purple'];
+// for (let i = 0; i < colors.length; i = i + 1) {
+//     setTimeout(function () {
+//         document.body.style.backgroundColor = colors[i];
+//     }, i * 1000);
+// }
+
+// function greetUser(username) {
+//     console.log('Hello' + username);
+// };
+// greetUser('Tanvi');
+
+
+// function faveGame(game) {
+//     console.log(`My favorite game is ${game}`);
+// };
+// faveGame('the game of life');
+
+// function myCar(brand, color) {
+//     console.log(`${brand} is ${color}`);
+// }
+// myCar(`Porsche`, `pink`);
+
+
+// CALLBACK FUNCTION - USED AS AN ARGUEMENT
+// function sayHello() {
+//     console.log('Hello');
+// }
+// setTimeout(sayHello, 2000);
+
+
+// ANONYMOUS FUNCTION - DOESNT HAVE A NAME
+// setTimeout(function () {
+//     console.log('Hello');
+// }, 2000);
+
+
