@@ -88,7 +88,6 @@ mirror.style.cssText = `
   position: absolute;
   max-width: 500px;
   margin: 0 auto;
-  padding:0 1rem;
   top: 0;
   right: 0;
   left: 0;
