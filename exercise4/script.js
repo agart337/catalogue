@@ -1,59 +1,40 @@
-const images =
-    ['images/154785067c16917dfafeed30dba5a5f8.jpg',
-        'images/a8fc6346c6d70e70e72de8f15e50aac1.jpg',
-        'images/f16d0238b15af15682d7886902b7cf48.jpg',
-        'images/images-1.jpeg',
-        'images/images.jpeg',
-        'images/lTZeYGu.jpg',
-        'images/s-l1200-1.jpg',
-        'images/s-l1200.jpg',
-        'images/SL24ADS_VINTAGE_Brut2.jpg',
-        'images/SL24ADS_VINTAGE_CENTAUR-762x1024.jpg',
-        'images/SL24ADS_VINTAGE_Denim-1024x665.jpg',
-        'images/SL24ADS_VINTAGE_-Tabac-398x1024.jpg',
-        'images/SL24ADS_STORYTELLING_Eau_Sauvage-722x1024.jpg',
-        'images/SL24ADS_STORYTELLING_Guerlain_Habit_Rouge.jpg'
-    ];
+const images = [
+    'https://enzomari.com/content/1-images/0001.jpg', // Il Gioco delle Favole, 1957
+    'https://enzomari.com/content/1-images/019.jpg', // Putrelle, 1958
+    'https://enzomari.com/content/1-images/0004.jpeg', // Cubo, 1959
+    'https://enzomari.com/content/1-images/028.jpg', // Scatole, 1960
+    'https://enzomari.com/content/1-images/021.jpg', // Vassoio Rettangolare, 1961
+    'https://enzomari.com/content/1-images/038.jpg', // Il posto dei giochi, 1961
+    'https://enzomari.com/content/1-images/027.jpg', // Tagliacarte Elicoidale, 1962
+    'https://enzomari.com/content/1-images/041.jpg', // Vaso da fiori doppio, 1968
+    'https://enzomari.com/content/1-images/scan-001.jpeg', // Caraffa Tribolata in Vetro, 1969
+    'https://enzomari.com/content/1-images/00011.jpg', // Kurili, 1970
+    'https://enzomari.com/content/1-images/043.jpg', // Sedia in plastica, 1971
+    'https://enzomari.com/content/1-images/00018.jpg', // Day-n ight, 1971
+    'https://enzomari.com/content/1-images/00010.jpg', // Dulband, 1973
+    'https://enzomari.com/content/1-images/0006.jpeg', // Samos Model S, 1973
+    'https://enzomari.com/content/1-images/scan-002.jpeg', // 16 Pesci, 1973
+    'https://enzomari.com/content/1-images/046.jpg', // Tavolo Frate, 1973
+    'https://enzomari.com/content/1-images/00015.jpg', // Aggregato, 1974
+    'https://enzomari.com/content/1-images/00019.jpeg', // Cugino, 1975
+    'https://enzomari.com/content/1-images/0007.jpeg', // Zani & Zani, 1987
+    'https://enzomari.com/content/1-images/00013.jpg' // Guardare un Fotografo, 2000
+];
 
-function addImage(ourSource, rotation) {
+function addImage(ourSource, ourWidth) {
     const image = document.createElement('img');
     image.src = ourSource;
-    image.style.transform = `rotate(${rotation}deg)`;
-    document.body.appendChild(image);
-    return image;
-};
-
-let imageIndex = 0;
-
-for (let imageCount = 0; imageCount < 14; imageCount++) {
-    while (imageIndex >= images.length) {
-        imageIndex = 0;
-    }
-
-    const currentImage = images[imageIndex];
-
-    // ROTATION IN FIXED INCREMENTS
-    // setTimeout(function () {
-    //     addImage(currentImage, imageCount * 22.5);
-    // }, imageCount * 1000);
-    // imageIndex++;
-
-
-    // ROTATION IN RANDOM INCREMENTS
-    //     setTimeout(function () {
-    //         addImage(currentImage, Math.random() * 90 - 45);
-    //     }, imageCount * 1000);
-    //     imageIndex++;
-
-    setTimeout(function () {
-        const image = addImage(currentImage, Math.random() * 45 - 22.5)
-        addImage(currentImage, Math.random() * 90 - 45);
-
-        image.style.transition = 'filter 30s';
-
-        setTimeout(function () {
-            image.style.filter = `grayscale(150) sepia(150) hue-rotate(180deg)`;
-        }, 50);
-    }, imageCount * 1000);
-    imageIndex++;
+    image.style.width = `${ourWidth}px`;
+    document.body.prepend(image);
 }
+
+function addRandomImage() {
+    const randomIndex = Math.floor(Math.random() * images.length);
+    const randomWidth = Math.random() * 450 + 50;
+
+    addImage(images[randomIndex], randomWidth);
+}
+
+addRandomImage();
+
+document.body.addEventListener('click', addRandomImage);
