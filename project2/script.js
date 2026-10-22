@@ -2,19 +2,13 @@
 let flowers = [];
 
 function setup() {
-    createCanvas(1920, 720);
-
+    createCanvas(795, 795);
 
     // Generate 20 flowers.
     flowerPower();
 }
 function draw() {
     background("lightblue");
-
-    // For each flower in the array of flowers.
-    for (let flower of flowers) {
-        drawFlower(flower);
-    }
     updateAndDrawFlowers()
 }
 
@@ -54,21 +48,19 @@ function drawFlower(flower) {
 }
 
 function updateAndDrawFlowers() {
-    for (let flower of flowers) {
-        // Draw the flower.
+    for (let i = flowers.length - 1; i >= 0; i--) {
+        let flower = flowers[i];
+
         drawFlower(flower);
 
-        // Wilting effect for the flower.
+        // Wilting effect
         flower.size *= 0.99;
 
-        // Reduce lifespan.
+        // Reduce lifespan
         flower.lifespan -= 1;
 
+        // Remove wilted flower
         if (flower.lifespan <= 0) {
-            // Save index of the flower
-            let i = flowers.indexOf(flower);
-
-            // Remove wilted flower 
             flowers.splice(i, 1);
         }
     }
