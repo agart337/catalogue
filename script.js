@@ -29,6 +29,12 @@ function drawBall() {
     bctx.fillStyle = ball.moving ? BLUE : PINK;
     bctx.fill();
     bctx.closePath();
+
+    bctx.fillStyle = "white";
+    bctx.font = `bold ${ball.radius * 0.35}px acumin, Arial, sans-serif`;
+    bctx.textAlign = "center";
+    bctx.textBaseline = "middle";
+    bctx.fillText(ball.moving ? "Click Me" : "Again", ball.x, ball.y);
 }
 
 function updateBall() {
