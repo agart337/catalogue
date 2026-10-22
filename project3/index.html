@@ -4,21 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Asia, in pieces</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <title>Garden</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
-        <div>
-            <p>Interactive atlas / 01</p>
-            <h1>Asia, in pieces.</h1>
-        </div>
-        <p>Mouse over a shape to reveal its name</p>
-    </header>
-    <div class="intro"><span>Each shape is pulled out of the original map and placed in its own cell.</span><span
-            id="count">Loading shapes…</span></div>
     <div id="source-map" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet">
             <style xmlns:xlink="http://www.w3.org/1999/xlink" type="text/css">
@@ -279,7 +269,10 @@
             </g>
         </svg>
     </div>
+
     <main id="grid" class="grid" aria-label="Interactive Asian country shapes"></main>
+
+    <script src="script.js"></script>
 
 </body>
 

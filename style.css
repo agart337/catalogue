@@ -7,7 +7,7 @@
 
 @font-face {
     font-family: 'acumin';
-    src: url('./fonts/acumin-pro-condensed.otf') format('truetype');
+    src: url('./fonts/acumin-pro-condensed.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
