@@ -2,13 +2,13 @@
 let flowers = [];
 
 function setup() {
-    createCanvas(795, 795);
+    createCanvas(1600, 800);
 
     // Generate 20 flowers.
     flowerPower();
 }
 function draw() {
-    background("lightblue");
+    background("white");
     updateAndDrawFlowers()
 }
 
@@ -28,7 +28,7 @@ function createFlower() {
     let flower = {
         x: random(20, 1900),
         y: random(20, 700),
-        size: random(20, 75),
+        size: random(40, 150),
         lifespan: random(255, 300),
         color: color(random(255), random(255), random(255))
     };
