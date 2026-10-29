@@ -1,39 +1,44 @@
-// Array of flowers.
+
 let flowers = [];
 
 function setup() {
     createCanvas(1600, 800);
 
-    // Generate 20 flowers.
+    // Generate 20 flowers at random locations.
     flowerPower();
 }
+
 function draw() {
-    background("white");
-    updateAndDrawFlowers()
+    // Slowly fade previous frames to create a trail.
+    background(255, 50);
+
+    updateAndDrawFlowers();
 }
 
-// Function to create 20 flowers.
+// Generate 20 initial flowers.
 function flowerPower() {
-    for (let i = 0; i < 20; i += 1) {
-        // Create a flower in a random location.
-        let flower = createFlower();
-
-        // Add the flower to the flowers array.
-        flowers.push(flower);
+    for (let i = 0; i < 20; i++) {
+        flowers.push(createFlower());
     }
 }
 
-// ... createFlower() and drawFlower()
+// Create a flower.
 function createFlower() {
-    let flower = {
-        x: random(20, 1900),
-        y: random(20, 700),
+    return {
+        x: random(20, width - 20),
+        y: random(20, height - 20),
         size: random(40, 150),
-        lifespan: random(255, 300),
-        color: color(random(255), random(255), random(255))
+        lifespan: 90,
+        color: color(
+            random(255),
+            random(255),
+            random(255),
+            64
+        )
     };
-    return flower;
 }
+
+// Draw a flower at 50% opacity.
 function drawFlower(flower) {
     noStroke();
     fill(flower.color);
@@ -42,39 +47,50 @@ function drawFlower(flower) {
     ellipse(flower.x, flower.y, flower.size / 2, flower.size);
     ellipse(flower.x, flower.y, flower.size, flower.size / 2);
 
-    // Draw a yellow center.
-    fill(255, 204, 0);
+    // Draw the yellow centre at 50% opacity.
+    fill(255, 204, 0, 200);
     circle(flower.x, flower.y, flower.size / 2);
 }
 
+// Update flower size and lifespan.
 function updateAndDrawFlowers() {
     for (let i = flowers.length - 1; i >= 0; i--) {
         let flower = flowers[i];
 
         drawFlower(flower);
 
-        // Wilting effect
-        flower.size *= 0.99;
+        // Gradually shrink the flower.
+        flower.size *= 0.97;
 
-        // Reduce lifespan
+        // Reduce lifespan.
         flower.lifespan -= 1;
 
-        // Remove wilted flower
+        // Remove flowers when they expire.
         if (flower.lifespan <= 0) {
             flowers.splice(i, 1);
         }
     }
 }
 
-function mousePressed() {
-    let flower = createFlower();
+// Create flowers as the mouse moves.
+function mouseMoved() {
+    addFlowerAtMouse();
+}
 
-    // reassign x to be mouseX
-    flower.x = mouseX;
+// Also create flowers when dragging.
+function mouseDragged() {
+    addFlowerAtMouse();
+}
 
-    // reassign y to be mouseY
-    flower.y = mouseY;
+function addFlowerAtMouse() {
+    // Space flowers out along the cursor path.
+    if (dist(mouseX, mouseY, pmouseX, pmouseY) > 12) {
+        let flower = createFlower();
 
-    // add the flower to the flowers array
-    flowers.push(flower);
+        flower.x = mouseX;
+        flower.y = mouseY;
+        flower.size = random(25, 70);
+
+        flowers.push(flower);
+    }
 }

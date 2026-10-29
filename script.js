@@ -66,9 +66,9 @@ document.addEventListener("click", (event) => {
 });
 
 // week 1
-let details = document.querySelector(".faqs")
+let details = document.querySelector(".inspo")
 details.addEventListener("toggle", (event) => {
-    let mirrorDetails = document.querySelector("#mirror .faqs")
+    let mirrorDetails = document.querySelector("#mirror .inspo")
 
     if (details.open) {
         mirrorDetails.open = true

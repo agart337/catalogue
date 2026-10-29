@@ -203,7 +203,7 @@ summary:hover {
     font-style: italic;
 }
 
-.answer {
+.inspiration {
     padding: 0 1rem;
     font-style: italic;
     font-weight: normal;
@@ -216,13 +216,13 @@ summary:hover {
 
 }
 
-.serviceinfo,
-.serviceextras {
+.projectinfo,
+.projectextras {
     font-style: italic;
     font-weight: normal;
 }
 
-.service {
+.project {
 
     align-items: baseline;
 }
@@ -238,12 +238,26 @@ ol p {
     margin-bottom: 0.5rem;
 }
 
-.service:before {
+.project:before {
     content: counter(item) ". ";
 }
 
-ol li {
+
+/* Reset numbering for each list */
+ol {
+    padding: 0;
+    list-style: none;
+    counter-reset: item;
+}
+
+/* Increment the counter only for project/exercise titles */
+ol>.item>li.line {
     counter-increment: item;
+}
+
+/* Display the number before each title */
+.project::before {
+    content: counter(item) ". ";
 }
 
 a:hover {
@@ -267,8 +281,8 @@ a:hover {
     margin: 0 0.5rem;
 }
 
-.service,
-.price {
+.project,
+.date {
     margin: 0;
 }
 
@@ -278,7 +292,7 @@ a:hover {
         filter: url("#distort-mobile");
     }
 
-    .services {
+    .projects {
         transform: skew(0);
     }
 
@@ -288,7 +302,7 @@ a:hover {
     }
 
     #mirror header,
-    #mirror .services,
+    #mirror .projects,
     #mirror .pitch p,
     #mirror details .faq {
         transform: skew(0)

@@ -32,7 +32,7 @@ async function findISS() {
     } else {
         const code = place.country_code;
         const flag = String.fromCodePoint(127397 + code.charCodeAt(0), 127397 + code.charCodeAt(1));
-        country.textContent = `Above ${flag} ${code}`;
+        country.textContent = `Above ${code} ${flag}`;
     }
 }
 
