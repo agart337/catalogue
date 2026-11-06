@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Rijksmuseum Collection</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background: white;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2em 0;
+            box-sizing: border-box;
+        }
+
+        canvas {
+            width: 100%;
+            height: calc(100dvh - 15em);
+            object-fit: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="c"></canvas>
+
+    <div id="artwork-info">
+        <p id="artwork-title"></p>
+        <p id="artwork-artist"></p>
+        <p id="artwork-date"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

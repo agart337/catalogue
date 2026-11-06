@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Local Storage</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <input id="word">
+
+    <script>
+        const wordInput = document.querySelector("#word");
+
+        wordInput.value = localStorage.getItem("savedWord");
+
+        wordInput.addEventListener("input", function () {
+            localStorage.setItem("savedWord", wordInput.value);
+        });
+
+        // limit on how much data a browser can store in local storage, usually around 5MB. If you exceed this limit, you'll get a QUOTA_EXCEEDED_ERR error.
+
+    </script>
+</body>
+
+</html>
