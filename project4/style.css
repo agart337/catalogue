@@ -1,0 +1,51 @@
+ html,
+ body {
+     height: 100%;
+     margin: 0;
+     background: white;
+ }
+
+ body {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 2em 0;
+     box-sizing: border-box;
+ }
+
+ canvas {
+     width: 100%;
+     height: calc(100dvh - 15em);
+     object-fit: contain;
+ }
+
+ #artwork-info {
+     position: fixed;
+     bottom: 25px;
+     left: 50%;
+     transform: translateX(-50%);
+
+     width: 90%;
+     text-align: center;
+
+     color: black;
+     font-family: Arial, sans-serif;
+     font-size: 1em;
+     line-height: 1.5;
+
+     z-index: 10;
+     pointer-events: none;
+ }
+
+ #artwork-info p {
+     margin: 0;
+ }
+
+ #artwork-title {
+     font-weight: bold;
+ }
+
+ #artwork-artist,
+ #artwork-date {
+     font-weight: normal;
+ }

@@ -56,16 +56,42 @@ function dataURL(url) {
 
 // Get the image URL from an artwork record
 async function getArtworkImage(item) {
+
     try {
-        // Step 1: Get the artwork record
+
+        // Get the artwork record
         const artworkURL = dataURL(item.id) + "?_profile=la-framed";
+
         const artworkRes = await fetch(artworkURL);
 
         if (!artworkRes.ok) return null;
 
         const artwork = await artworkRes.json();
 
-        // Step 2: Find the VisualItem
+
+        // GET ARTWORK TITLE
+        const title = artwork.identified_by?.find(
+            item => item.type === "Name"
+        )?.content || "Untitled";
+
+
+        // GET ARTIST
+        const artists = artwork.produced_by?.carried_out_by || [];
+
+        const artist = artists.map(person =>
+            person._label || person.label || "Unknown artist"
+        ).join(", ") || "Unknown artist";
+
+
+        // GET DATE
+        const timespan = artwork.produced_by?.timespan;
+
+        const date = timespan?.begin_of_the_begin
+            ? timespan.begin_of_the_begin.slice(0, 4)
+            : "Date unknown";
+
+
+        // FIND VISUAL ITEM
         const visualItemURL = artwork.shows?.[0]?.id;
 
         if (!visualItemURL) return null;
@@ -78,9 +104,9 @@ async function getArtworkImage(item) {
 
         const visual = await visualRes.json();
 
-        // Step 3: Find the DigitalObject
-        const digitalObjectURL =
-            visual.digitally_shown_by?.[0]?.id;
+
+        // FIND DIGITAL OBJECT
+        const digitalObjectURL = visual.digitally_shown_by?.[0]?.id;
 
         if (!digitalObjectURL) return null;
 
@@ -92,29 +118,36 @@ async function getArtworkImage(item) {
 
         const digital = await digitalRes.json();
 
-        // Step 4: Extract the actual IIIF image URL
+
+        // FIND IMAGE URL
         const imageURL = digital.access_point?.find(
             item => item.id?.includes("iiif.micr.io")
         )?.id;
 
         if (!imageURL) return null;
 
-        // Extract the image identifier
+
+        // RESIZE IMAGE
         const identifier = imageURL
             .split("iiif.micr.io/")[1]
             .split("/")[0];
 
-        // Request a resized image instead of the original
         const resizedURL =
             `https://iiif.micr.io/${identifier}/full/1200,/0/default.jpg`;
 
+
+        // RETURN IMAGE + INFORMATION TOGETHER
         return {
             url: resizedURL,
-            time: 0
+            title: title,
+            artist: artist,
+            date: date
         };
 
     } catch (error) {
-        console.error("Could not load artwork:", error);
+
+        console.error("Artwork error:", error);
+
         return null;
     }
 }
@@ -223,10 +256,14 @@ async function start() {
 
             if (!frame) continue;
 
-            // Load the actual image
             const img = await load(frame.url);
 
-            if (img) return img;
+            if (img) {
+                return {
+                    img: img,
+                    details: frame
+                };
+            }
         }
 
         throw new Error("Could not load an artwork image");
@@ -239,18 +276,19 @@ async function start() {
     const scale = Math.min(
         1,
         MAX_SIDE / Math.max(
-            current.naturalWidth,
-            current.naturalHeight
+            current.img.naturalWidth,
+            current.img.naturalHeight
         )
     );
 
     canvas.width = off.width =
-        Math.round(current.naturalWidth * scale);
+        Math.round(current.img.naturalWidth * scale);
 
     canvas.height = off.height =
-        Math.round(current.naturalHeight * scale);
+        Math.round(current.img.naturalHeight * scale);
 
-    drawPlain(current);
+    drawPlain(current.img);
+    updateArtworkInfo(current.details);
 
     console.log("First artwork loaded!");
 
@@ -269,13 +307,28 @@ async function start() {
 
         // 5. Transition between artworks
         if (reduceMotion) {
-            drawPlain(next);
+            drawPlain(next.img);
         } else {
-            await transition(current, next);
+            await transition(current.img, next.img);
         }
 
         current = next;
+
+        // Update artwork information
+        updateArtworkInfo(current.details);
     }
+}
+
+function updateArtworkInfo(details) {
+
+    document.getElementById("artwork-title").textContent =
+        details.title;
+
+    document.getElementById("artwork-artist").textContent =
+        details.artist;
+
+    document.getElementById("artwork-date").textContent =
+        details.date;
 }
 
 start().catch(console.error);
